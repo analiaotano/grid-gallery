@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* {
+    /* estas clases siempre tienen que ir. hace que esto se aplique en toda la web, en todos los elementos que tengamos */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* es para definir variables */
+    /* backgrounds */
+    --primary-bg: rgb(25, 24, 24);
+    --secondary-bg: rgb(45, 43, 43);
+    --semi-black: rgb(57, 56, 56);
+    --semi-gray: rgb(83, 80, 80);
+    --light-gray: rgb(136, 132, 132);
+
+    /* texts */
+    --dark-white: rgb(216, 215, 215);
+    --semi-white: rgb(228, 224, 224);
+    --text-white: rgb(236, 232, 232);
+    --white: white;
+
+    /*decoration */
+    --rose: rgb(255, 0, 149);
+    --light-red: rgb(248, 67, 161);
+    --purple: rgb(214, 17, 218);
+}
+
+body {
+    background: var(--primary-bg);
+    color: var(--semi-white);
+    font-family: 'Lilita One', cursive;
+    padding: 3rem;
+}
+
+
+p {
+    margin-bottom: 2rem;
+    max-width: 950px;
+    color: var(--text-white);
+}
+
+ul {
+    margin-bottom: 2rem;
+    padding: 1rem 1rem;
+}
+
+
+
+
+/*estilos de clase */
+
+.container {
+     /*se va a aplicar a los 8 divs que estàn adentro */
+    padding: 2rem;
+    display: grid;
+    place-content: center; /*para centrar los elementos*/
+    /* columnas de distintos tamaños */
+    grid-template-columns: 350px 300px 150px 150px; /* para las columnas. le puedo definir un ancho a cada columna y para definir la cantidad de columnas es la cantidad de valores que voy a definir. si queremos todas las columnas iguales podemos poner "repeat", luego el valor de la cantidad de columnas que queremos y luego el tamaño */
+
+    /* grid-template-rows: 200px; */
+    grid-auto-rows: 1fr; /* hace que se divida el valor en la cantidad de espacio que tenemos, que tiene nuestro padre y que se acomode automàtico, en fracciones*/
+    gap: 10px;
+    height: 100vh;
+}
+
+.item {
+    /*para aplicar a todos los elementos hijos de mi grid*/
+    border-radius: 1rem;
+    box-shadow: 0 0 15px 0 black; /* le da profundidad y se ve mejor, mas limpio, mas nitido */
+}
+
+
+.item:nth-child(1) {
+    /* seguidamente agregamos la imagen o elem que queramos con "url()"; luego el valor de background-repeat (no-repeat); luego backgroud position (center); y luego background sice(cover */
+    background:  url(./assets/cafe1.jpg) no-repeat center/cover;
+    grid-column: 1/2; /* tiene 2 valores, con el 1ro le indicamosdònde queremos que arranque y con el 2do dònde queremos que termine */
+    grid-row: 1/3;
+}
+
+
+.item:nth-child(2) {
+    background:  url(./assets/cafe2.jpg) no-repeat center/cover;
+    grid-column: 2/3; 
+    grid-row: 1/2;
+
+    
+}
+
+.item:nth-child(3) {
+    background:  url(./assets/cafe3.jpg) no-repeat center/cover;
+    grid-column: 3/4; 
+    grid-row: 1/2;
+}
+
+.item:nth-child(4) {
+    background:  url(./assets/cafe4.jpg) no-repeat center/cover;
+    grid-column: 4/5; 
+    grid-row: 1/2;   
+}
+
+.item:nth-child(5) {
+    background:  url(./assets/cafe5.jpg) no-repeat center/cover;
+    grid-column: 1/2; 
+    grid-row: 3/4;
+}
+
+.item:nth-child(6) {
+    background:  url(./assets/cafe6.jpg) no-repeat center/cover;
+    grid-column: 2/3; 
+    grid-row: 2/4;
+}
+
+.item:nth-child(7) {
+    background:  url(./assets/cafe7.jpg) no-repeat center/cover;
+    grid-column: 3/5; 
+    grid-row: 2/3;
+}
+
+.item:nth-child(8) {
+    background:  url(./assets/cafe8.jpg) no-repeat center/cover;
+    grid-column: 3/5; 
+    grid-row: 3/4;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    overflow: auto;
+}
+
+
+
+
+
+
+
+/* celu */
+
+@media screen and (min-width: 250px) and (max-width: 480px) {
+
+    .container {
+        grid-template-columns: repeat(1, 1fr); /* con esto le digo que sea una sola solumna y que ocupe todo el espacio*/
+    }
+
+    .item:nth-child(even),
+    .item:nth-child(odd) {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
+
+
+
+
+
+/* tablet */
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .item:nth-child(n)  /* es lo mismo que poner (even), (odd) */{
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
+
+
+
+
+
+
+
+
+footer {
+    text-align: center;
+}
